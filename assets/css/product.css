@@ -1,0 +1,356 @@
+/* ==========================================================================
+   Selling Big in Big Pharma — product page styles
+   Loaded after styles.css on selling-big-in-big-pharma.html only.
+   Reuses the shared tokens; adds a navy + gold accent taken from the book cover.
+   ========================================================================== */
+
+:root {
+  --color-navy: #0d1b3a;
+  --color-navy-2: #15295a;
+  --color-gold: #f4c247;           /* cover accent; use on dark backgrounds only */
+  --color-gold-hover: #ffd466;
+  --color-tint: #eef3fc;           /* light blue section background */
+  --color-on-navy-muted: #c3cde2;
+
+  --radius-lg: 10px;
+  --shadow-card: 0 1px 2px rgba(13, 27, 58, 0.06), 0 6px 20px rgba(13, 27, 58, 0.06);
+  --shadow-card-hover: 0 2px 4px rgba(13, 27, 58, 0.08), 0 14px 32px rgba(13, 27, 58, 0.12);
+  --shadow-book: 0 24px 48px rgba(0, 0, 0, 0.35), 0 4px 12px rgba(0, 0, 0, 0.25);
+}
+
+/* --------------------------------------------------------------------------
+   Shared pieces
+   -------------------------------------------------------------------------- */
+.section--tint { background: var(--color-tint); }
+.section--navy { background: var(--color-navy); color: var(--color-on-navy-muted); }
+.section--navy h2,
+.section--navy h3 { color: var(--color-on-dark); }
+.section + .section--tint,
+.section + .section--navy { padding-top: var(--space-section); }
+.section--tint + .section,
+.section--navy + .section { padding-top: var(--space-section); }
+
+.section-head { max-width: 46rem; margin-bottom: var(--space-7); }
+.section-head--center { margin-inline: auto; text-align: center; }
+.section-head p:not(.eyebrow) { font-size: var(--fs-lead); }
+
+.eyebrow--gold { color: var(--color-gold); }
+.eyebrow--blue { color: var(--color-link); }
+
+.btn--gold { background: var(--color-gold); color: var(--color-navy); }
+.btn--gold:hover { background: var(--color-gold-hover); color: var(--color-navy); }
+
+.btn--outline-light { border-color: rgba(255, 255, 255, 0.55); color: var(--color-on-dark); }
+.btn--outline-light:hover { border-color: var(--color-on-dark); background: rgba(255, 255, 255, 0.08); color: var(--color-on-dark); }
+
+.btn--outline { border-color: var(--color-primary); color: var(--color-primary); }
+.btn--outline:hover { background: var(--color-primary); color: var(--color-on-dark); }
+
+.btn-row { display: flex; flex-wrap: wrap; align-items: center; gap: var(--space-3) var(--space-4); }
+
+.fine-print { margin-top: var(--space-4); font-size: var(--fs-small); }
+.section--navy .fine-print a { color: var(--color-on-dark); }
+.section--navy .fine-print a:hover { color: var(--color-gold); }
+
+.section--navy :focus-visible,
+.product-hero :focus-visible { box-shadow: 0 0 0 2px var(--color-navy), 0 0 0 4px var(--color-gold); }
+
+.site-nav a[aria-current="page"] { text-decoration: underline; text-decoration-thickness: 2px; text-underline-offset: 0.3em; }
+
+/* --------------------------------------------------------------------------
+   A. Hero
+   -------------------------------------------------------------------------- */
+.product-hero {
+  position: relative;
+  overflow: hidden;
+  background-color: var(--color-navy);
+  background-image:
+    linear-gradient(100deg, rgba(13, 27, 58, 0.97) 0%, rgba(13, 27, 58, 0.9) 50%, rgba(21, 41, 90, 0.78) 100%),
+    url("../img/seminar-presentation.jpg");
+  background-size: cover;
+  background-position: center;
+  color: var(--color-on-navy-muted);
+}
+
+.product-hero__inner {
+  display: grid;
+  grid-template-columns: minmax(0, 1.35fr) minmax(0, 1fr);
+  align-items: center;
+  gap: var(--space-7) clamp(2rem, 1rem + 4vw, 5rem);
+  padding-block: clamp(3.5rem, 2rem + 6vw, 7rem);
+}
+
+.product-hero h1 { margin-bottom: var(--space-5); color: var(--color-on-dark); }
+.product-hero__lead {
+  max-width: 34rem;
+  margin-bottom: var(--space-6);
+  color: rgba(255, 255, 255, 0.86);
+  font-size: var(--fs-lead);
+  line-height: 1.6;
+}
+
+.product-hero__book { justify-self: center; }
+.product-hero__book img {
+  width: min(100%, 300px);
+  border-radius: 3px;
+  box-shadow: var(--shadow-book);
+  transform: rotate(2deg);
+}
+
+@media (max-width: 860px) {
+  .product-hero__inner { grid-template-columns: 1fr; text-align: center; }
+  .product-hero__lead { margin-inline: auto; }
+  .product-hero .btn-row { justify-content: center; }
+  .product-hero__book { order: -1; }
+  .product-hero__book img { width: min(60vw, 220px); }
+}
+
+@media (max-width: 480px) {
+  .product-hero .btn-row .btn { width: 100%; }
+}
+
+/* Credentials strip under the hero */
+.credentials {
+  border-bottom: 1px solid var(--color-border);
+  background: var(--color-surface);
+}
+.credentials__list {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+.credentials__item {
+  padding: var(--space-6) var(--space-5);
+  text-align: center;
+}
+.credentials__item + .credentials__item { border-left: 1px solid var(--color-border); }
+.credentials__value {
+  display: block;
+  color: var(--color-navy);
+  font-size: clamp(2rem, 1.6rem + 1.4vw, 2.75rem);
+  font-weight: var(--fw-heavy);
+  line-height: 1.1;
+}
+.credentials__label { display: block; margin-top: var(--space-2); color: var(--color-muted); font-size: var(--fs-small); line-height: 1.5; }
+
+@media (max-width: 640px) {
+  .credentials__list { grid-template-columns: 1fr; }
+  .credentials__item { padding-block: var(--space-5); }
+  .credentials__item + .credentials__item { border-left: 0; border-top: 1px solid var(--color-border); }
+}
+
+/* --------------------------------------------------------------------------
+   Cards (audience, curriculum)
+   -------------------------------------------------------------------------- */
+.card {
+  padding: clamp(1.5rem, 1rem + 1.5vw, 2rem);
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-card);
+  transition: box-shadow 0.2s ease, transform 0.2s ease;
+}
+.card:hover { box-shadow: var(--shadow-card-hover); transform: translateY(-2px); }
+.card h3 { margin-bottom: var(--space-3); }
+
+.audience {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--space-5);
+}
+.audience .card { border-top: 3px solid var(--color-primary); }
+.audience__tag {
+  margin-bottom: var(--space-3);
+  color: var(--color-link);
+  font-size: var(--fs-eyebrow);
+  font-weight: var(--fw-bold);
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+}
+
+.opportunity-note {
+  max-width: 46rem;
+  margin: var(--space-7) auto 0;
+  color: var(--color-ink);
+  font-size: var(--fs-lead);
+  text-align: center;
+}
+
+@media (max-width: 767px) { .audience { grid-template-columns: 1fr; } }
+
+/* --------------------------------------------------------------------------
+   C. Book
+   -------------------------------------------------------------------------- */
+.book {
+  display: grid;
+  grid-template-columns: minmax(0, 0.8fr) minmax(0, 1.2fr);
+  gap: var(--space-7) clamp(2rem, 1rem + 4vw, 5rem);
+  align-items: center;
+}
+.book__cover { justify-self: center; }
+.book__cover img { width: min(100%, 320px); border-radius: 3px; box-shadow: 0 18px 40px rgba(13, 27, 58, 0.25); }
+.book__title { margin-bottom: var(--space-4); color: var(--color-ink); font-size: var(--fs-lead); }
+.book__title cite { font-weight: var(--fw-bold); font-style: italic; }
+.book .pull-quote { margin-block: var(--space-5) var(--space-6); }
+
+@media (max-width: 767px) {
+  .book { grid-template-columns: 1fr; }
+  .book__cover img { width: min(60vw, 240px); }
+}
+
+/* --------------------------------------------------------------------------
+   D. Masterclass
+   -------------------------------------------------------------------------- */
+.course-facts {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: var(--space-3);
+  margin: calc(-1 * var(--space-4)) 0 var(--space-7);
+  padding: 0;
+  list-style: none;
+}
+.course-facts li {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-2);
+  padding: var(--space-2) var(--space-4);
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  border-radius: 999px;
+  color: var(--color-on-dark);
+  font-size: var(--fs-small);
+  font-weight: var(--fw-semibold);
+}
+.course-facts svg { width: 16px; height: 16px; color: var(--color-gold); flex: none; }
+
+.curriculum {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: var(--space-4);
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  counter-reset: module;
+}
+.module {
+  counter-increment: module;
+  position: relative;
+  padding: var(--space-5) var(--space-5) var(--space-5) calc(var(--space-5) + 2.75rem);
+  background: var(--color-navy-2);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: var(--radius-lg);
+  transition: border-color 0.2s ease, transform 0.2s ease;
+}
+.module:hover { border-color: rgba(244, 194, 71, 0.55); transform: translateY(-2px); }
+.module::before {
+  content: counter(module, decimal-leading-zero);
+  position: absolute;
+  top: var(--space-5);
+  left: var(--space-5);
+  color: var(--color-gold);
+  font-size: 1.125rem;
+  font-weight: var(--fw-heavy);
+  line-height: 1.4;
+}
+.module h3 { margin-bottom: var(--space-1); font-size: 1.0625rem; line-height: 1.4; }
+.module p { color: var(--color-on-navy-muted); font-size: var(--fs-small); line-height: 1.6; }
+
+.course-cta {
+  margin-top: var(--space-7);
+  text-align: center;
+}
+.course-cta .btn-row { justify-content: center; }
+
+@media (max-width: 960px) { .curriculum { grid-template-columns: 1fr 1fr; } }
+@media (max-width: 600px) { .curriculum { grid-template-columns: 1fr; } }
+@media (max-width: 480px) { .course-cta .btn { width: 100%; } }
+
+/* --------------------------------------------------------------------------
+   E. About Jim
+   -------------------------------------------------------------------------- */
+.author {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1.15fr);
+  gap: var(--space-7) clamp(2rem, 1rem + 4vw, 5rem);
+  align-items: center;
+}
+.author__photo img { width: 100%; border-radius: var(--radius-lg); box-shadow: var(--shadow-card); }
+.author__facts {
+  margin: var(--space-5) 0;
+  padding: 0;
+  list-style: none;
+}
+.author__facts li {
+  position: relative;
+  padding-left: var(--space-6);
+}
+.author__facts li + li { margin-top: var(--space-3); }
+.author__facts li::before {
+  content: "";
+  position: absolute;
+  top: 0.55em;
+  left: var(--space-1);
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: var(--color-primary);
+}
+
+@media (max-width: 767px) { .author { grid-template-columns: 1fr; } }
+
+/* --------------------------------------------------------------------------
+   F. Endorsements
+   -------------------------------------------------------------------------- */
+.endorsement {
+  padding: clamp(1.5rem, 1rem + 2vw, 2.5rem);
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-card);
+}
+.endorsement .testimonial__head img { width: 72px; height: 72px; }
+.endorsement .testimonial__body { padding-left: 0; border-left: 0; }
+.endorsement .testimonial__body::before {
+  content: "\201C";
+  display: block;
+  height: 0.5em;
+  margin-bottom: var(--space-2);
+  color: var(--color-primary);
+  font-size: 3.5rem;
+  font-weight: var(--fw-heavy);
+  line-height: 1;
+}
+
+.endorsement--featured { margin-bottom: var(--space-5); border-top: 4px solid var(--color-primary); }
+.endorsement--featured .testimonial__head img { width: 96px; height: 96px; }
+.endorsement--featured .testimonial__body { columns: 2 22rem; column-gap: clamp(2rem, 1rem + 3vw, 4rem); }
+.endorsement--featured .testimonial__body::before { column-span: all; }
+.endorsement--featured .testimonial__body p { break-inside: avoid; }
+
+.endorsements {
+  columns: 2 22rem;
+  column-gap: var(--space-5);
+}
+.endorsements .endorsement {
+  break-inside: avoid;
+  margin-bottom: var(--space-5);
+}
+
+/* --------------------------------------------------------------------------
+   G. Final CTA
+   -------------------------------------------------------------------------- */
+.final-cta {
+  background:
+    radial-gradient(ellipse at 85% 0%, rgba(244, 194, 71, 0.16), transparent 55%),
+    linear-gradient(160deg, var(--color-navy-2), var(--color-navy));
+  color: var(--color-on-navy-muted);
+  text-align: center;
+}
+.final-cta h2 { max-width: 32ch; margin-inline: auto; color: var(--color-on-dark); }
+.final-cta p { max-width: 40rem; margin: 0 auto var(--space-6); font-size: var(--fs-lead); }
+.final-cta .btn-row { justify-content: center; }
+.final-cta :focus-visible { box-shadow: 0 0 0 2px var(--color-navy), 0 0 0 4px var(--color-gold); }
+
+@media (max-width: 480px) { .final-cta .btn { width: 100%; } }

@@ -1,4 +1,4 @@
-// Mobile menu and "Book & Master Class" submenu toggles.
+// Mobile menu and (optional) submenu toggles.
 (() => {
   const navToggle = document.querySelector('.nav-toggle');
   const nav = document.getElementById('site-nav');
@@ -8,10 +8,11 @@
     navToggle.setAttribute('aria-expanded', String(open));
     nav.classList.toggle('is-open', open);
   };
-  const setSub = (open) => subToggle.setAttribute('aria-expanded', String(open));
+  // No page currently has a submenu; keep the hook so one can be added back without JS changes.
+  const setSub = (open) => subToggle?.setAttribute('aria-expanded', String(open));
 
   navToggle.addEventListener('click', () => setNav(navToggle.getAttribute('aria-expanded') !== 'true'));
-  subToggle.addEventListener('click', () => setSub(subToggle.getAttribute('aria-expanded') !== 'true'));
+  subToggle?.addEventListener('click', () => setSub(subToggle.getAttribute('aria-expanded') !== 'true'));
 
   // Close menus after choosing a link, on Escape, or on outside click.
   nav.addEventListener('click', (e) => {
