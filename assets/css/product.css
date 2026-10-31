@@ -348,7 +348,10 @@
   color: var(--color-on-navy-muted);
   text-align: center;
 }
+.final-cta h1,
 .final-cta h2 { max-width: 32ch; margin-inline: auto; color: var(--color-on-dark); }
+.final-cta p a { color: var(--color-on-dark); }
+.final-cta p a:hover { color: var(--color-gold); }
 .final-cta p { max-width: 40rem; margin: 0 auto var(--space-6); font-size: var(--fs-lead); }
 .final-cta .btn-row { justify-content: center; }
 .final-cta :focus-visible { box-shadow: 0 0 0 2px var(--color-navy), 0 0 0 4px var(--color-gold); }

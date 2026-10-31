@@ -49,11 +49,10 @@
 </head>
 <body>
   <!--
-    PAYMENT PLACEHOLDERS (TODO(stripe)):
-    Every purchase/enrollment button on this page is a dummy link awaiting a Stripe checkout page.
-    Search for data-checkout to find them all, and replace each href when the Stripe URLs exist:
-      data-checkout="masterclass"  → Masterclass enrollment (2 buttons)
-      data-checkout="book"         → Book purchase (2 buttons)
+    PURCHASE LINKS (search for data-checkout to find them all):
+      data-checkout="masterclass"  → masterclass-coming-soon.html (2 buttons)
+                                     TODO(stripe): replace with the Stripe checkout URL when it exists.
+      data-checkout="book"         → Amazon Kindle listing (2 buttons)
   -->
   <a class="skip-link" href="#main">Skip to content</a>
 
@@ -155,9 +154,7 @@
           <blockquote class="pull-quote">
             <p>“I get a lot of satisfaction from teaching people in a short period of time the things it took me many years to learn.”</p>
           </blockquote>
-          <!-- TODO(stripe): replace with the Stripe checkout URL for the book.
-               Previous live destination (Amazon Kindle, verified): https://www.amazon.com/Selling-Pharma-Step-Step-Pharmaceutical-ebook/dp/B0FLS45Y5Q/ -->
-          <a class="btn btn--primary btn--lg" href="#stripe-book-checkout" data-checkout="book">Get the Book</a>
+          <a class="btn btn--primary btn--lg" href="https://www.amazon.com/Selling-Pharma-Step-Step-Pharmaceutical-ebook/dp/B0FLS45Y5Q/" target="_blank" rel="noopener" data-checkout="book">Get the Book</a>
         </div>
       </div>
     </section>
@@ -239,7 +236,7 @@
 
         <div class="course-cta">
           <!-- TODO(stripe): replace with the Stripe checkout URL for the masterclass. -->
-          <a class="btn btn--gold btn--lg" href="#stripe-masterclass-checkout" data-checkout="masterclass">Enroll in the Masterclass</a>
+          <a class="btn btn--gold btn--lg" href="masterclass-coming-soon.html" data-checkout="masterclass">Enroll in the Masterclass</a>
           <p class="fine-print">Have questions first? Email <a href="mailto:jim@lynnhavenconsultants.com">jim@lynnhavenconsultants.com</a> or call <a href="tel:757-635-3266">757-635-3266</a>.</p>
         </div>
       </div>
@@ -359,9 +356,9 @@
         <h2 id="final-cta-title">Ready to Learn What It Takes to Succeed in Pharmaceutical Sales?</h2>
         <p>Explore the book and masterclass and start developing the skills that can help shape your pharmaceutical sales career.</p>
         <div class="btn-row">
-          <!-- TODO(stripe): replace both hrefs with the Stripe checkout URLs. -->
-          <a class="btn btn--gold btn--lg" href="#stripe-masterclass-checkout" data-checkout="masterclass">Enroll in the Masterclass</a>
-          <a class="btn btn--outline-light btn--lg" href="#stripe-book-checkout" data-checkout="book">Purchase the Book</a>
+          <!-- TODO(stripe): replace the masterclass href with the Stripe checkout URL. -->
+          <a class="btn btn--gold btn--lg" href="masterclass-coming-soon.html" data-checkout="masterclass">Enroll in the Masterclass</a>
+          <a class="btn btn--outline-light btn--lg" href="https://www.amazon.com/Selling-Pharma-Step-Step-Pharmaceutical-ebook/dp/B0FLS45Y5Q/" target="_blank" rel="noopener" data-checkout="book">Purchase the Book</a>
         </div>
       </div>
     </section>
