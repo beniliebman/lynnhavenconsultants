@@ -1,0 +1,35 @@
+/* ==========================================================================
+   Blog post styles
+   Loaded after styles.css on blog pages only.
+   ========================================================================== */
+
+.post-header {
+  background: var(--color-surface-alt);
+  border-bottom: 1px solid var(--color-border);
+}
+.post-header__inner {
+  max-width: calc(44rem + 2 * var(--gutter));
+  padding-block: clamp(2.5rem, 1.5rem + 4vw, 4.5rem);
+}
+.post-header h1 { margin-bottom: var(--space-4); }
+.post-byline { margin: 0; color: var(--color-muted); font-size: var(--fs-small); font-weight: var(--fw-semibold); }
+
+.post {
+  max-width: calc(44rem + 2 * var(--gutter));
+  padding-block: clamp(2.5rem, 1.5rem + 4vw, 4.5rem) var(--space-section);
+}
+.post__body p { margin-bottom: var(--space-5); font-size: var(--fs-lead); line-height: 1.75; }
+
+.post__divider {
+  width: 64px;
+  height: 2px;
+  margin: var(--space-7) auto;
+  border: 0;
+  background: var(--color-primary);
+}
+
+.post__footer {
+  margin-top: var(--space-7);
+  padding-top: var(--space-5);
+  border-top: 1px solid var(--color-border);
+}
